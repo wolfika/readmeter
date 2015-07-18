@@ -22,5 +22,6 @@
   "sub": false,
   "supernew": false,
 
+  "mocha": true,
   "node": true
 }
