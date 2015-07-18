@@ -25,12 +25,16 @@ module.exports = exports = function(grunt) {
       test: {
         src: ['test/**/*'],
         dest: 'lib-cov/'
+      },
+      src: {
+        src: ['src/**/*'],
+        dest: 'lib-cov/'
       }
     },
 
     blanket: {
       test: {
-        src: ['src/**/*'],
+        src: ['src/'],
         dest: 'lib-cov/src'
       }
     },
