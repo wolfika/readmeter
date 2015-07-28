@@ -43,10 +43,10 @@
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-mocha-cov": "^0.4.0",
     "grunt-task-loader": "^0.6.0",
+    "html-file-cov": "^1.0.0",
     "jshint-stylish": "^2.0.1",
     "mocha": "^2.2.5",
     "time-grunt": "^1.2.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -21,7 +21,7 @@ module.exports = exports = function(grunt) {
       coverage: {
         options: {
           coveralls: true,
-          reporter: 'html-cov'
+          reporter: 'html-file-cov'
         }
       },
       test: {
