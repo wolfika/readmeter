@@ -21,7 +21,7 @@ module.exports = exports = function(grunt) {
       coverage: {
         options: {
           coveralls: true,
-          reporter: 'html-file-cov'
+          reporter: 'mocha-lcov-reporter'
         }
       },
       test: {
