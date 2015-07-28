@@ -25,21 +25,28 @@
   "bugs": {
     "url": "https://github.com/wolfika/readmeter/issues"
   },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "src"
+      ],
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ]
+    }
+  },
   "homepage": "https://github.com/wolfika/readmeter#readme",
   "devDependencies": {
     "chai": "^3.1.0",
     "grunt": "^0.4.5",
-    "grunt-blanket": "0.0.8",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jshint": "^0.11.2",
-    "grunt-coveralls": "^1.0.0",
-    "grunt-mocha-test": "^0.12.7",
+    "grunt-mocha-cov": "^0.4.0",
     "grunt-task-loader": "^0.6.0",
     "jshint-stylish": "^2.0.1",
     "mocha": "^2.2.5",
-    "mocha-lcov-reporter": "0.0.2",
-    "time-grunt": "^1.2.1",
-    "travis-cov": "^0.2.5"
+    "time-grunt": "^1.2.1"
+  },
+  "dependencies": {
   }
 }

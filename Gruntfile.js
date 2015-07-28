@@ -1,6 +1,10 @@
 module.exports = exports = function(grunt) {
 
-  require('grunt-task-loader')(grunt);
+  require('grunt-task-loader')(grunt, {
+    mapping: {
+      mochacov: 'grunt-mocha-cov'
+    }
+  });
   require('time-grunt')(grunt);
 
   grunt.initConfig({
@@ -12,78 +16,26 @@ module.exports = exports = function(grunt) {
       all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
     },
 
-    clean: {
+    mochacov: {
+      all: ['test/**/*.js'],
       coverage: {
-        src: ['lib-cov/']
+        options: {
+          coveralls: true,
+          reporter: 'html-cov'
+        }
       },
-      reports: {
-        src: ['reports/']
-      }
-    },
-
-    copy: {
       test: {
-        src: ['test/**/*'],
-        dest: 'lib-cov/'
-      },
-      src: {
-        src: ['src/**/*'],
-        dest: 'lib-cov/'
-      }
-    },
-
-    blanket: {
-      test: {
-        src: ['src/'],
-        dest: 'lib-cov/src'
-      }
-    },
-
-    mochaTest: {
-      'spec': {
         options: {
-          reporter: 'spec',
-          timeout: 10000
-        },
-        src: ['lib-cov/test/**/*.js']
-      },
-      'html-cov': {
-        options: {
-          reporter: 'html-cov',
-          quiet: true,
-          captureFile: 'reports/coverage.html'
-        },
-        src: ['lib-cov/test/**/*.js']
-      },
-      'mocha-lcov-reporter': {
-        options: {
-          reporter: 'mocha-lcov-reporter',
-          quiet: true,
-          captureFile: 'reports/lcov.info'
-        },
-        src: ['lib-cov/test/**/*.js']
-      },
-      'travis-cov': {
-        options: {
-          reporter: 'travis-cov'
-        },
-        src: ['lib-cov/test/**/*.js']
-      }
-    },
-
-    coveralls: {
-      options: {
-        force: true
-      },
-      all: {
-        src: 'reports/lcov.info'
+          reporter: 'spec'
+        }
       }
     }
   });
 
-  grunt.registerTask('build', ['clean', 'blanket', 'copy']);
-  grunt.registerTask('ci', ['default', 'coveralls']);
+  grunt.registerTask('coverage', ['mochacov:coverage']);
+  grunt.registerTask('test', ['mochacov:test']);
+  grunt.registerTask('ci', ['test', 'coverage']);
 
-  grunt.registerTask('default', ['jshint', 'build', 'mochaTest']);
+  grunt.registerTask('default', ['jshint', 'test']);
 
 };
